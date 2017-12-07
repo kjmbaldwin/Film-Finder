@@ -10,6 +10,21 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+$('#search-btn').on('click', function(){
+
+var ombdSearch = $('#search-input').val().trim()
+var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=15c27a54";
+
+$.ajax({
+  url: omdbURL,
+  method: 'GET'
+}).done(function(response){ 
+
+  console.log(response);
+
+});
+
+ });
 
 // omdb search setup
 var omdbKey = 'trilogy';
@@ -48,4 +63,3 @@ function movieInfoDisplay(imdbID) {
         $('#movie-panel').prepend(newDiv);
     })
 }
-
