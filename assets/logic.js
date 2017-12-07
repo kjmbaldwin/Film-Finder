@@ -10,6 +10,7 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+
 // omdb search setup
 var omdbKey = 'trilogy';
 // var omdbURL = 'http://img.omdbapi.com/?apikey=' + omdbKey;
@@ -47,3 +48,4 @@ function movieInfoDisplay(imdbID) {
         $('#movie-panel').prepend(newDiv);
     })
 }
+
