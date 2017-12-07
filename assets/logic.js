@@ -10,29 +10,31 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+
+//##### OMDB API Calls #########
+
+var omdbKey = '15c27a54';
+
+//Search from using user input
 $('#search-btn').on('click', function(){
 
-var ombdSearch = $('#search-input').val().trim()
-var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=15c27a54";
+  var ombdSearch = $('#search-input').val().trim()
+  var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=" + omdbKey;
 
-$.ajax({
-  url: omdbURL,
-  method: 'GET'
-}).done(function(response){ 
+  $.ajax({
+    url: omdbURL,
+    method: 'GET'
+  }).done(function(response){ 
 
   console.log(response);
 
+  });
 });
 
- });
 
-// omdb search setup
-var omdbKey = 'trilogy';
-// var omdbURL = 'http://img.omdbapi.com/?apikey=' + omdbKey;
 
 var testImdbId = 'tt0083658'; // imdbID for bladerunner
 
-movieInfoDisplay(testImdbId);
 function movieInfoDisplay(imdbID) {
     var queryURL = "https://www.omdbapi.com/?i=" + imdbID + "&y=&plot=short&apikey=" + omdbKey;
     // ajax call
@@ -64,6 +66,12 @@ function movieInfoDisplay(imdbID) {
     })
 }
 
+//run the bladerunner search:
+movieInfoDisplay(testImdbId);
+
+
+
+//######## Modal load ##########
 $(document).ready(function(){
     $("#login-btn").click(function(){
         $("#myModal").modal();
