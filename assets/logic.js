@@ -63,3 +63,9 @@ function movieInfoDisplay(imdbID) {
         $('#movie-panel').prepend(newDiv);
     })
 }
+
+$(document).ready(function(){
+    $("#login-btn").click(function(){
+        $("#myModal").modal();
+    });
+});
