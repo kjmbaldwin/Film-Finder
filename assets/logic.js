@@ -10,39 +10,56 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-
-//api keys
-var OmdbKey = '15c27a54';
-
-// $('#search-input').onkeypress(function(){ 
-
-// });
-
-
 $('#search-btn').on('click', function(){
 
-  var OmdbSearch = $('#search-input').val().trim();
+var ombdSearch = $('#search-input').val().trim()
+var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=15c27a54";
 
-  $.ajax({
-  url: 'https://www.omdbapi.com/?s=' + OmdbSearch + '&plot=short&apikey=' + OmdbKey,
-  method: "GET"
-  }).done(function(response) {
+$.ajax({
+  url: omdbURL,
+  method: 'GET'
+}).done(function(response){ 
 
-    var movieArr = response.Search;
-    console.log(movieArr);
-    
-    for (var i = 0; i < movieArr.length; i++) {
-      var $results = $('<div>').addClass("panel panel-default").text(movieArr[i].Title);
-      $('#results').append($results);
-    
-    }
-  
-  });
+  console.log(response);
+
 });
 
+ });
 
+// omdb search setup
+var omdbKey = 'trilogy';
+// var omdbURL = 'http://img.omdbapi.com/?apikey=' + omdbKey;
 
+var testImdbId = 'tt0083658'; // imdbID for bladerunner
 
+movieInfoDisplay(testImdbId);
+function movieInfoDisplay(imdbID) {
+    var queryURL = "https://www.omdbapi.com/?i=" + imdbID + "&y=&plot=short&apikey=" + omdbKey;
+    // ajax call
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function(response) {
+    	console.log('RESPONSE: ', response);
+        var newDiv = $('<div>');
 
+        var titleElement = $('<h2>').text(response.Title);
+        newDiv.append(titleElement);
 
- // on click search-btn
+        // var rating = response.Rated;
+        var ratingElement = $('<p>').text('Rating: ' + response.Rated);
+        newDiv.append(ratingElement);
+
+        // var plot = response.Plot;
+        var plotElement = $('<p>').text('Plot: ' + response.Plot);
+        newDiv.append(plotElement);
+
+        // var posterURL = response.Poster;
+        var posterElement = $('<img>');
+        posterElement.attr('src', response.Poster);
+        posterElement.attr('alt', response.Title);
+        newDiv.append(posterElement);
+
+        $('#movie-panel').prepend(newDiv);
+    })
+}
