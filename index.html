@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <title></title>
+  <title>Film Finder</title>
   
   <!-- firebase CDN -->
   <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
@@ -16,6 +16,34 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Link1<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="login"><a data-toggle="modal" data-target="#loginModal"><span id="login-link" class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
 <div id="title" class="jumbotron text-center">
   <h1>Film Finder</h1>
   
@@ -24,6 +52,7 @@
 <div class="container">
   <div class="row margin-50">
     <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+
           <div class="input-group">
             <input type="text" class="form-control" id="search-input" placeholder="Search for Film...">
             <span class="input-group-btn">
@@ -40,19 +69,14 @@
         <div class="panel-body">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta cum deleniti sequi porro consequuntur inventore odit perspiciatis, consequatur voluptates ab aperiam, alias accusamus ratione at debitis reiciendis sint dolores esse.
         </div>
-      </div>
-    </div>
-    
 
-  <div class="col-lg-4 col-md-4 col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-body">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta cum deleniti sequi porro consequuntur inventore odit perspiciatis, consequatur voluptates ab aperiam, alias accusamus ratione at debitis reiciendis sint dolores esse.
       </div>
-    </div>
+     </div> 
+
+  <div class="row">
+    <div class="col-lg-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eum at cumque magnam doloribus temporibus nisi, recusandae impedit ipsa. Esse ipsum, cumque eius natus delectus! Quae accusamus sunt eveniet eos. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa fuga ipsum molestiae deserunt fugiat saepe explicabo veritatis a commodi et possimus unde laudantium, veniam adipisci temporibus dolor nisi itaque cumque!</div>    
   </div>
-  </div>
-  </div>
+</div>
 
   <!-- jquery CDN -->
   <script

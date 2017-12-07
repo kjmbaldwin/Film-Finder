@@ -11,6 +11,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 
+
 //api keys
 var OmdbKey = '15c27a54';
 
@@ -46,3 +47,4 @@ $('#search-btn').on('click', function(){
 
 
  // on click search-btn
+
