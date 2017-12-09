@@ -60,6 +60,7 @@ function movieInfoDisplay(imdbID) {
         var posterElement = $('<img>');
         posterElement.attr('src', response.Poster);
         posterElement.attr('alt', response.Title);
+        posterElement.addClass("poster");
         newDiv.append(posterElement);
 
         $('#movie-panel').prepend(newDiv);

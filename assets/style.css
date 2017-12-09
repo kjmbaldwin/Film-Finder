@@ -1,3 +1,16 @@
+body {
+
+	background-image: url("theatre.png");
+}
+
+/*black container*/
+#main-container {
+
+	width: 90%;
+	background-color: black;
+	margin: auto;
+}
+
 .margin-50 {
 
 	margin-bottom: 50px;
@@ -5,5 +18,47 @@
 
 .navbar-default {
 
-	background-color: navy;
+	
+	background-color: rgb(113, 16, 8);
+	border: #000;
+
+}
+
+#movie-panel {
+
+	 width: 100%;
+}
+
+.search-poster {
+
+	width: 50%;
+}
+
+
+.poster {
+
+	height: 165px;
+	width: 135px;
+}
+
+#title {
+
+	background-color: 
+}
+
+/*white font for navbar*/
+.navbar-default .navbar-brand{
+
+	color: white;
+}
+
+.navbar-default .navbar-nav>li>a{
+	color: white;
+}
+
+
+/*adds margin for search bar*/
+#search-margin {
+
+	margin-top: 15px;
 }

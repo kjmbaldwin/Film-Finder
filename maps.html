@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Film Finder</title>
+  
+  <!-- firebase CDN -->
+  <script src="https://www.gstatic.com/firebasejs/4.7.0/firebase.js"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment@2.19.3/moment.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Home</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="maps.html">Map<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li id="login-btn"><a data-toggle="modal" data-target="#loginModal"><span id="login-link" class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+<!-- <div id="title" class="jumbotron text-center">
+  <h1>Film Finder</h1>
+  
+</div> -->
+
+<div id="main-container">
+  <div class="container">
+    <div class="row margin-50">
+      <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+        <div class="input-group">
+          <input id="search-margin" type="text" class="form-control" id="search-input" placeholder="Search for Film...">
+            <span class="input-group-btn">
+              <button id="search-margin" class="btn btn-default" id="search-btn" type="button">Search</button> 
+            </span>
+          </div><!-- /input-group -->
+        </div>
+      </div> 
+
+      <div id="results"></div>
+      <div class="row">
+
+      <!-- <div class="search-poster" class="container">
+        <div class="col-lg-8 col-md-8 col-sm-12">
+          <div class="panel panel-default">
+            <div id="movie-panel" class="panel-body">
+            </div>
+          </div>
+        </div> 
+      </div> -->
+
+      <div class="row">
+        <div class="col-lg-12">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi eum at cumque magnam doloribus temporibus nisi, recusandae impedit ipsa. Esse ipsum, cumque eius natus delectus! Quae accusamus sunt eveniet eos. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa fuga ipsum molestiae deserunt fugiat saepe explicabo veritatis a commodi et possimus unde laudantium, veniam adipisci temporibus dolor nisi itaque cumque!</div>    
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal code -->
+<div class="container">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Log In</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+            <div class="form-group">
+              <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
+              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+  <!-- local javascript file -->
+  <script type="text/javascript" src="assets/map-logic.js"></script>
+
+</body>
+</html>
