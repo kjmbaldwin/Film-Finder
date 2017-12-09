@@ -45,25 +45,56 @@ function movieInfoDisplay(imdbID) {
     	console.log('RESPONSE: ', response);
         var newDiv = $('<div>');
 
-        var titleElement = $('<h2>').text(response.Title);
-        newDiv.append(titleElement);
+        var movieYear = response.Year;
+        var director = response.Director;
+        var runTime = response.Runtime;
+        var genre = response.Genre;
+        var actors = response.Actors;
 
-        // var rating = response.Rated;
-        var ratingElement = $('<p>').text('Rating: ' + response.Rated);
-        newDiv.append(ratingElement);
 
-        // var plot = response.Plot;
-        var plotElement = $('<p>').text('Plot: ' + response.Plot);
-        newDiv.append(plotElement);
+        var titleElement = $('<div>');
+        var titleDiv = $('<div>');
+        var detailDiv = $('<div>');
+
+        var titleSpan = $('<span>').text(response.Title).addClass('movie-title');
+        var year = $('<span>').text( " (" + response.Year + ")");
+        titleDiv.append(titleSpan).append(year);
+        
+        var detailSpan = $('<span>').text(response.Rated + " | " + runTime + " | " + genre + " | " + response.Released);
+        detailDiv.append(detailSpan);
+
+        titleElement.append(titleDiv).append(detailDiv);
+
+        
+
+        var posterRow = $('<div>').addClass('row');
+        
+              
 
         // var posterURL = response.Poster;
         var posterElement = $('<img>');
         posterElement.attr('src', response.Poster);
         posterElement.attr('alt', response.Title);
         posterElement.addClass("poster");
-        newDiv.append(posterElement);
+        var posterDiv = $('<div>').addClass('col-lg-4 col-md-4 col-sm-3').append(posterElement);
 
-        $('#movie-panel').prepend(newDiv);
+
+        posterRow.append(posterDiv);
+
+        
+
+        var detailRow = $('<div>').addClass('col-lg-8 col-md-8 col-sm-9');
+
+
+        // var plot = response.Plot;
+        var plotElement = $('<p>').text('Plot: ' + response.Plot);
+        detailRow.append(plotElement);
+        posterRow.append(detailRow);
+
+        
+        newDiv.append(titleElement, posterRow);
+        
+        $('.movie-panel').prepend(newDiv);
     })
 }
 

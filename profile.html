@@ -18,7 +18,7 @@
   <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 <body>
-
+<div class="profile-body-wrapper">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -54,22 +54,40 @@
           <span class="input-group-btn">
             <button class="btn btn-default" id="search-btn" type="button">Search</button> 
           </span>
-        </div><!-- /input-group -->
+      </div><!-- /input-group -->
+    </div>
+  </div>
+</div> 
+
+<div class="row">
+  <div class="col-lg-offset-2 col-sm-12 col-md-8 col-lg-8">
+
+            <!-- Profile and Favorites tab -->
+            <div class="panel with-nav-tabs panel-default">
+                <div class="panel-heading">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab1default" data-toggle="tab">Favorites</a></li>
+                            <li><a href="#tab2default" data-toggle="tab">Friends</a></li>
+                        </ul>
+                </div>
+
+                <!-- Results that panels display -->
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1default">Default 1</div>
+                        <div class="tab-pane fade" id="tab2default">Default 2</div>
+                    </div>
+                </div>
+            </div>
       </div>
-     </div> 
-     <div id="results"></div>
-    <div class="row">
+</div>
 
-      <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12">
-        <div class="panel panel-default">
-        <!-- Display result of Google Maps API call  -->
 
-        <div id="map-panel" class="panel-body">
-          <iframe id="map-frame" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
+<div id="results"></div>
+  <div class="row">
 
-      </div>
-     </div> 
+
+      
 
 
 <!-- Modal code -->
@@ -103,6 +121,7 @@
       
     </div>
   </div>
+ </div>
 </div>
 
   <!-- local javascript files -->
