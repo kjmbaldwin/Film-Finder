@@ -16,4 +16,6 @@ $.ajax({
 		// query displays theaters near the zip code
 		$('#map-frame').attr('src', 'https://www.google.com/maps/embed/v1/search?q=theaters%20near%20' + response.postal + '&key=' + mapsApiKey);
 	})
+
 })
+
