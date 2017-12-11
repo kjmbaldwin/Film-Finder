@@ -1,4 +1,3 @@
-<!-- beginning -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +18,7 @@
   <link rel="stylesheet" type="text/css" href="assets/style.css">
 </head>
 <body>
-
+<div class="profile-body-wrapper">
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -46,31 +45,28 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<div class="row">
+  <div class="col-lg-offset-2 col-sm-12 col-md-8 col-lg-8">
+           <!-- Profile and Favorites tab -->
+    <div class="panel panel-default">
+  <!-- Default panel contents -->
+    <div class="panel-heading">Profile</div>
+    <div class="panel-body">
+      <a href="#"><img src="user-thumb.png" alt="..." class="img-thumbnail"></a>
+      <ul>
+        <li class="list-group-item">Favorites</li>
+      </ul>
+  </div>
+  <!-- List group -->
+</div>
+</div>
 
-<div class="container">
-  <div class="row margin-50">
-    <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
-      <div class="input-group">
-        <input type="text" class="form-control" id="search-input" placeholder="Search for Film...">
-          <span class="input-group-btn">
-            <button class="btn btn-default" id="search-btn" type="button">Search</button> 
-          </span>
-        </div><!-- /input-group -->
-      </div>
-     </div> 
-     <div id="results"></div>
-    <div class="row">
 
-      <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12">
-        <div class="panel panel-default">
-        <!-- Display result of Google Maps API call  -->
+<div id="results"></div>
+  <div class="row">
 
-        <div id="map-panel" class="panel-body">
-          <iframe id="map-frame" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
 
-      </div>
-     </div> 
+      
 
 
 <!-- Modal code -->
@@ -104,6 +100,7 @@
       
     </div>
   </div>
+ </div>
 </div>
 
   <!-- local javascript files -->
@@ -112,4 +109,3 @@
 
 </body>
 </html>
-<!-- end -->
