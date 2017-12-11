@@ -1,13 +1,14 @@
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyBlAgFLX4MoD4fxQ8b_O-FCJ4SvNyFGPtg",
-    authDomain: "api-group-project.firebaseapp.com",
-    databaseURL: "https://api-group-project.firebaseio.com",
-    projectId: "api-group-project",
-    storageBucket: "api-group-project.appspot.com",
-    messagingSenderId: "1016861619283"
-  };
-  firebase.initializeApp(config);
+var config = {
+  apiKey: "AIzaSyBlAgFLX4MoD4fxQ8b_O-FCJ4SvNyFGPtg",
+  authDomain: "api-group-project.firebaseapp.com",
+  databaseURL: "https://api-group-project.firebaseio.com",
+  projectId: "api-group-project",
+  storageBucket: "api-group-project.appspot.com",
+  messagingSenderId: "1016861619283"
+};
+firebase.initializeApp(config);
+
+var database = firebase.database();
 
 //##### USER ACCOUNT SETUP #####
 
@@ -48,12 +49,12 @@ function toggleSignIn() {
         alert(errorMessage);
       }
       console.log(error);
-      document.getElementById('login-btn').disabled = false;
+      document.getElementById('sign-in-btn').disabled = false;
       // [END_EXCLUDE]
     });
     // [END authwithemail]
   }
-  document.getElementById('login-btn').disabled = true;
+  document.getElementById('sign-in-btn').disabled = true;
 }
 
 /**
@@ -159,7 +160,7 @@ function initApp() {
       var providerData = user.providerData;
       // [START_EXCLUDE]
       // document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-      document.getElementById('login-btn').textContent = 'Sign out';
+      document.getElementById('sign-in-btn').textContent = 'Sign out';
       // document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
       // if (!emailVerified) {
       //   document.getElementById('quickstart-verify-email').disabled = false;
@@ -169,17 +170,17 @@ function initApp() {
       // User is signed out.
       // [START_EXCLUDE]
       // document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-      document.getElementById('login-btn').textContent = 'Sign in';
+      document.getElementById('sign-in-btn').textContent = 'Sign in';
       // document.getElementById('quickstart-account-details').textContent = 'null';
       // [END_EXCLUDE]
     }
     // [START_EXCLUDE silent]
-    document.getElementById('login-btn').disabled = false;
+    document.getElementById('sign-in-btn').disabled = false;
     // [END_EXCLUDE]
   });
   // [END authstatelistener]
 
-  document.getElementById('login-btn').addEventListener('click', toggleSignIn, false);
+  document.getElementById('sign-in-btn').addEventListener('click', toggleSignIn, false);
   document.getElementById('sign-up-btn').addEventListener('click', handleSignUp, false);
   // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
   // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
@@ -188,3 +189,8 @@ function initApp() {
 window.onload = function() {
   initApp();
 };
+
+
+$(document).on('click', '#sign-in-btn', function(){
+  alert('testing');
+  });
