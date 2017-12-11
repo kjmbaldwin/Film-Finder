@@ -91,8 +91,15 @@ function movieInfoDisplay(imdbID) {
         detailRow.append(plotElement);
         posterRow.append(detailRow);
 
+        // favorite button
+        var favBtn = $('<button>').text(' Add to favorites');
+        favBtn.addClass('add btn btn-default');
+
+        var iconSpan = $('<span>');
+        iconSpan.addClass('glyphicon glyphicon-star');
+        favBtn.prepend(iconSpan);
         
-        newDiv.append(titleElement, posterRow);
+        newDiv.append(titleElement, posterRow, favBtn);
         
         $('.movie-panel').prepend(newDiv);
     })
