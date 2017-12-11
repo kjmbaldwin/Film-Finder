@@ -116,3 +116,23 @@ $(document).ready(function(){
         $("#myModal").modal();
     });
 });
+
+//######## Add a movie to favorites ##########
+$(document).on('click', '.add', function() {
+  var movieID = $(this).attr('data-movie-id');
+  var user = 'testuser';  // hardcode for testing
+  console.log('data-movie-id: ', movieID);
+  database.ref(user + '/favObj').once('value').then(function(snapshot) {
+    var dataObj = snapshot.val();
+    console.log('dataObj:', dataObj);
+    if (!dataObj) {
+      dataObj = []; // setup dataObj as an array, if no pre-existing data
+    }
+    dataObj.push(movieID);
+    console.log('new dataObj: ', dataObj);
+    database.ref(user).set({
+      favObj: dataObj
+    })
+    console.log('done');
+  })
+})
