@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // beginning
 var config = {
   apiKey: "AIzaSyBlAgFLX4MoD4fxQ8b_O-FCJ4SvNyFGPtg",
@@ -8,6 +9,7 @@ var config = {
   messagingSenderId: "1016861619283"
 };
 firebase.initializeApp(config);
+
 
 var database = firebase.database();
 
@@ -116,8 +118,15 @@ function movieInfoDisplay(imdbID) {
         posterRow.append(detailRow);
         posterRow.append(detailRow2);
 
+        // favorite button
+        var favBtn = $('<button>').text(' Add to favorites');
+        favBtn.addClass('add btn btn-default');
+
+        var iconSpan = $('<span>');
+        iconSpan.addClass('glyphicon glyphicon-star');
+        favBtn.prepend(iconSpan);
         
-        newDiv.append(titleElement, posterRow);
+        newDiv.append(titleElement, posterRow, favBtn);
         
         $('.movie-panel').prepend(newDiv);
     })
@@ -133,5 +142,27 @@ $(document).ready(function(){
     $("#login-btn").click(function(){
         $("#myModal").modal();
     });
+
     // end
 });
+
+
+//######## Add a movie to favorites ##########
+$(document).on('click', '.add', function() {
+  var movieID = $(this).attr('data-movie-id');
+  var user = 'testuser';  // hardcode for testing
+  console.log('data-movie-id: ', movieID);
+  database.ref(user + '/favObj').once('value').then(function(snapshot) {
+    var dataObj = snapshot.val();
+    console.log('dataObj:', dataObj);
+    if (!dataObj) {
+      dataObj = []; // setup dataObj as an array, if no pre-existing data
+    }
+    dataObj.push(movieID);
+    console.log('new dataObj: ', dataObj);
+    database.ref(user).set({
+      favObj: dataObj
+    })
+    console.log('done');
+  })
+})

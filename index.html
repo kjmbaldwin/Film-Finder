@@ -40,7 +40,7 @@
         <li><a href="#">Profile</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li id="login-btn"><a data-toggle="modal" data-target="#loginModal"><span id="login-link" class="glyphicon glyphicon-log-in"></span> Log In</a></li>
+        <li id="login-btn"><a data-toggle="modal" data-target="#loginModal"><span id="login-link" class="glyphicon glyphicon-menu-hamburger"></span> Log In</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -99,13 +99,22 @@
           <form role="form">
             <div class="form-group">
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
-              <input type="text" class="form-control" id="usrname" placeholder="Enter email">
+              <input type="email" class="form-control" id="usrname" placeholder="Enter email">
             </div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
-              <input type="text" class="form-control" id="psw" placeholder="Enter password">
+              <input type="password" class="form-control" id="psw" placeholder="Enter password">
             </div>
-            <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+            <div class="row">
+              <div class="col-sm-offset-8 col-sm-4">
+                <div class="btn-group" role="group" aria-label="...">
+                  <button  type="button" class="btn btn-success" id="sign-in-btn"><span class="glyphicon glyphicon-log-in"> </span> Log In</button>
+                </div>
+                <div class="btn-group" role="group" aria-label="...">
+                  <button  type="button" class="btn btn-primary" id="sign-up-btn">Sign Up</button>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
         <div class="modal-footer">
@@ -119,6 +128,7 @@
 
   <!-- local javascript file -->
   <script type="text/javascript" src="assets/logic.js"></script>
+  <script type="text/javascript" src="assets/firebase-logic.js"></script>
 
 </body>
 <!-- end -->
