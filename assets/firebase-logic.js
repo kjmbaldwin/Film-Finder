@@ -10,6 +10,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+var uid;
+
 //##### USER ACCOUNT SETUP #####
 
 //Sign in/Sign out Button functions
@@ -24,6 +26,8 @@ function toggleSignIn() {
   //If there is a user, and the button is pressed, sign out.
   if (firebase.auth().currentUser) {
     firebase.auth().signOut();
+    uid = null;
+
   } 
 
   //if there is no user signed in already:
@@ -110,18 +114,23 @@ function initApp() {
       var emailVerified = user.emailVerified;
       var photoURL = user.photoURL;
       var isAnonymous = user.isAnonymous;
-      var uid = user.uid;
+      uid = user.uid;
       var providerData = user.providerData;
 
       //if a user is signed in, set button to read Sign out
       $('#sign-in-btn').text('Sign Out');
+      // $('#login-link').('Log Out');
 
       //update welcome messasge
-      $('#welcome').text('Welcome back, ' + displayName);
+      var current = firebase.auth().currentUser.email
+      var split = current.split('@')
+      $('#welcome').text('Welcome back, ' + split[0]);
 
     } else {
       // if user is signed out, set button to say sign in
       $('#sign-in-btn').text('Sign In');
+      $('#welcome').text('Welcome to Film Finder! To save movies, please sign up or log in!');
+      // $('#login-link').text('Log In');
     }
     
     document.getElementById('sign-in-btn').disabled = false;

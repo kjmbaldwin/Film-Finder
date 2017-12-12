@@ -146,9 +146,9 @@ function movieInfoDisplay(imdbID) {
 //######## Modal load ##########
 
 $(document).ready(function(){
-    $("#login-btn").click(function(){
+    $("#login-btn").on('click', function(){
         $('#usrname').val('');
-        $('#password').val('');
+        $('#psw').val('');
         $("#myModal").modal();
     });
 
