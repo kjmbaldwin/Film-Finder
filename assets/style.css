@@ -2,6 +2,8 @@
 body {
 
 	background-image: url("theatre.png");
+	background-attachment: fixed;
+
 }
 
 /*black container*/
@@ -36,6 +38,7 @@ body {
 
 	background-color: grey;
 	border-color: red;
+	min-height: 500px;
 
 
 	 /*width: 100%;*/
@@ -53,6 +56,7 @@ body {
 	margin-top: 10px;
 	height: 235px;
 	width: 195px;
+	margin-bottom: 10px;
 }
 
 #title {
@@ -111,8 +115,7 @@ body {
 
 .plot-text {
 
-	margin-top: 3px;
-	font-size: 14px;
+	margin-top: 4px;
 	color: white;
 }
 
@@ -129,8 +132,13 @@ body {
 
 .detail-font {
 	color: white;
+
 }
 
+.add {
+
+	margin-bottom: 50px;
+}
 /*profile CSS*/
 
 .img-thumbnail {
