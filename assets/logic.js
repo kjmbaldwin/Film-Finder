@@ -21,7 +21,7 @@ var omdbKey = '15c27a54';
 $('#search-btn').on('click', function(){
 
   var ombdSearch = $('#search-input').val().trim()
-  var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=" + omdbKey;
+  var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=" + omdbKey + "&type=movie";
 
   $.ajax({
     url: omdbURL,
@@ -29,13 +29,19 @@ $('#search-btn').on('click', function(){
   }).done(function(response){ 
 
   console.log(response);
+  var results = response.Search;
+  for (var i = results.length - 1; i >= 0; i--) {
+      var resultID = results[i].imdbID;
+      console.log('ID: ', resultID);
+      movieInfoDisplay(resultID);
+  }
 
   });
 });
 
 
 
-var testImdbId = 'tt0083658'; // imdbID for bladerunner
+// var testImdbId = 'tt0083658'; // imdbID for bladerunner
 
 function movieInfoDisplay(imdbID) {
     var queryURL = "https://www.omdbapi.com/?i=" + imdbID + "&y=&plot=short&apikey=" + omdbKey;
