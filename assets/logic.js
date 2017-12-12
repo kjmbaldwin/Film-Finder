@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // beginning
 var config = {
   apiKey: "AIzaSyBlAgFLX4MoD4fxQ8b_O-FCJ4SvNyFGPtg",
@@ -140,6 +139,8 @@ movieInfoDisplay(testImdbId);
 //######## Modal load ##########
 $(document).ready(function(){
     $("#login-btn").click(function(){
+        $('#usrname').val('');
+        $('#password').val('');
         $("#myModal").modal();
     });
 
