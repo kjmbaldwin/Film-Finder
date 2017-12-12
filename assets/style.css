@@ -1,4 +1,4 @@
-/*beginning*/
+
 body {
 
 	background-image: url("theatre.png");
@@ -17,6 +17,11 @@ body {
 .margin-50 {
 
 	margin-bottom: 50px;
+}
+
+.margin-top-10 {
+
+	margin-top: 10px;
 }
 
 .navbar-default {
@@ -64,7 +69,6 @@ body {
 .navbar-default .navbar-nav>li>a{
 	color: white;
 }
-
 
 /*adds margin for search bar*/
 #search-margin {
@@ -123,6 +127,9 @@ body {
 	color: rgb(48, 206, 232);
 }
 
+.detail-font {
+	color: white;
+}
 
 /*profile CSS*/
 
@@ -131,4 +138,13 @@ body {
 	height: 150px;
 	width: 120px;
 }
-/*end*/
+
+/*for welcome ID*/
+#welcome {
+	color: white;
+	font-size: 14px;
+	padding-top: 15px;
+    padding-right: 5px;
+}
+
+/*end
