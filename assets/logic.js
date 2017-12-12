@@ -138,7 +138,7 @@ function movieInfoDisplay(imdbID) {
 }
 
 //run the bladerunner search:
-movieInfoDisplay(testImdbId);
+//movieInfoDisplay(testImdbId);
 
 
 
