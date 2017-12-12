@@ -20,31 +20,21 @@ var omdbKey = '15c27a54';
 //Search from using user input
 $('#search-btn').on('click', function() {
 
-<<<<<<< HEAD
-  var ombdSearch = $('#search-input').val().trim()
-  var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=" + omdbKey + "&type=movie";
-=======
     var ombdSearch = $('#search-input').val().trim()
-    var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=" + omdbKey;
->>>>>>> e694957bb0274bbf379f78d06dd829b681beecb6
+    var omdbURL = "https://www.omdbapi.com/?s=" + ombdSearch + "&y=&plot=short&apikey=" + omdbKey + "&type=movie";
 
     $.ajax({
         url: omdbURL,
         method: 'GET'
     }).done(function(response) {
 
-<<<<<<< HEAD
-  console.log(response);
-  var results = response.Search;
-  for (var i = results.length - 1; i >= 0; i--) {
-      var resultID = results[i].imdbID;
-      console.log('ID: ', resultID);
-      movieInfoDisplay(resultID);
-  }
-=======
         console.log(response);
->>>>>>> e694957bb0274bbf379f78d06dd829b681beecb6
-
+        var results = response.Search;
+        for (var i = results.length - 1; i >= 0; i--) {
+            var resultID = results[i].imdbID;
+            console.log('ID: ', resultID);
+            movieInfoDisplay(resultID);
+        }
     });
 });
 
