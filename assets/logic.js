@@ -170,8 +170,8 @@ $(document).ready(function(){
 
 //######## Add a movie to favorites ##########
 $(document).on('click', '.add', function() {
-    if (uid === null){
-        alert('you need to log in'); //CHANGE THIS ALERT TO A MODAL <<<<<<<<<<<<<<<<<<<<<<
+    if (!uid){
+        $("#login-error-modal").modal(); //CHANGE THIS ALERT TO A MODAL <<<<<<<<<<<<<<<<<<<<<<
     } else {
         var movieID = $(this).attr('data-movie-id');
         var user = uid;
