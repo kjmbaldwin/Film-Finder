@@ -98,18 +98,19 @@ function movieInfoDisplay(imdbID) {
         // var plot = response.Plot;
         var plotElement = $('<p>').text('Plot: ' + response.Plot).addClass('plot-text');
 
-        var director = response.Director;
-        var directorSpan = $('<div>').text('Director: ' + director).addClass('movie-details');
+        var director = $('<div>').text(response.Director).addClass('detail-font');
+        var directorSpan = $('<div>').text('Director: ').addClass('movie-details margin-top-10').append(director);
 
         console.log(director);
+        console.log(directorSpan.append(director));
 
-        var writer = response.Writer;
-        var writerSpan = $('<div>').text('Writer: ' + writer).addClass('movie-details');
-
+        var writer = $('<div>').text(response.Writer).addClass('detail-font margin-t');
+        var writerSpan = $('<div>').text('Writer: ').addClass('movie-details margin-top-10').append(writer);
+        
         console.log(writer);
 
-        var actors = response.Actors;
-        var actorSpan = $('<div>').text('Stars: ' + actors).addClass('movie-details');
+        var actors = $('<div>').text(response.Actors).addClass('detail-font');
+        var actorSpan = $('<div>').text('Stars: ').addClass('movie-details margin-top-10').append(actors);
 
         console.log(actors);
 
