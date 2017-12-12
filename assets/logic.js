@@ -163,23 +163,27 @@ $(document).ready(function(){
 
 //######## Add a movie to favorites ##########
 $(document).on('click', '.add', function() {
-    var movieID = $(this).attr('data-movie-id');
-    var user = 'demouser'; // hardcode for testing
-    console.log('data-movie-id: ', movieID);
-    database.ref(user + '/favObj').once('value').then(function(snapshot) {
-        var dataObj = snapshot.val();
-        console.log('dataObj:', dataObj);
-        if (!dataObj) {
-            dataObj = []; // setup dataObj as an array, if no pre-existing data
-        }
-        console.log('test', dataObj.indexOf(movieID));
-        if (dataObj.indexOf(movieID) < 0) {
-            dataObj.push(movieID);
-            console.log('new dataObj: ', dataObj);
-            database.ref(user).set({
-                favObj: dataObj
-            })
-            console.log('done');
-        }
-    })
+    if (uid === null){
+        alert('you need to log in'); //CHANGE THIS ALERT TO A MODAL <<<<<<<<<<<<<<<<<<<<<<
+    } else {
+        var movieID = $(this).attr('data-movie-id');
+        var user = uid; // hardcode for testing
+        console.log('data-movie-id: ', movieID);
+        database.ref(user + '/favObj').once('value').then(function(snapshot) {
+            var dataObj = snapshot.val();
+            console.log('dataObj:', dataObj);
+            if (!dataObj) {
+                dataObj = []; // setup dataObj as an array, if no pre-existing data
+            }
+            console.log('test', dataObj.indexOf(movieID));
+            if (dataObj.indexOf(movieID) < 0) {
+                dataObj.push(movieID);
+                console.log('new dataObj: ', dataObj);
+                database.ref(user).set({
+                    favObj: dataObj
+                })
+                console.log('done');
+            }
+        })
+    }
 })

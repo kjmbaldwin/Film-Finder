@@ -90,6 +90,8 @@ function handleSignUp() {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
+    // var pushUID = 
+
 
     if (errorCode == 'auth/weak-password') {
       $('#valid-email-alert').text('Wrong email or password').show();
@@ -98,6 +100,12 @@ function handleSignUp() {
     }
     console.log(error);
   });
+
+  console.log('i think i forgot to save');
+  console.log("a new user was just create: " + firebase.auth().currentUser.uid);
+
+
+
 }
 
 //setup firebase listener.
@@ -126,6 +134,8 @@ function initApp() {
       var split = current.split('@')
       $('#welcome').text('Welcome back, ' + split[0]);
 
+      newUID(uid);
+
     } else {
       // if user is signed out, set button to say sign in
       $('#sign-in-btn').text('Sign In');
@@ -145,4 +155,18 @@ window.onload = function() {
   initApp();
 };
 
+//function writes UIDs to the database.
+function newUID(data){
+
+  database.ref().once('value').then(function(snapshot){
+    console.log(snapshot.val());
+
+    if(!snapshot.child(data).exists()){
+      database.ref().child(data).set('initialized');
+      console.log('I just added ' + uid + 'to the database');
+    }
+
+      });
+
+}
 
