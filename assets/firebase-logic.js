@@ -126,7 +126,7 @@ function initApp() {
       var providerData = user.providerData;
 
       //if a user is signed in, set button to read Sign out
-      $('#sign-in-btn').text('Sign Out');
+      $('#sign-in-btn').text('Log Out');
       // $('#login-link').('Log Out');
 
       //update welcome messasge
@@ -138,7 +138,7 @@ function initApp() {
 
     } else {
       // if user is signed out, set button to say sign in
-      $('#sign-in-btn').text('Sign In');
+      $('#sign-in-btn').text('Log In');
       $('#welcome').text('Welcome to Film Finder! To save movies, please sign up or log in!');
       // $('#login-link').text('Log In');
     }
@@ -155,18 +155,19 @@ window.onload = function() {
   initApp();
 };
 
-//function writes UIDs to the database.
+// writes UIDs to the database.
 function newUID(data){
 
   database.ref().once('value').then(function(snapshot){
-    console.log(snapshot.val());
+    // console.log('current UIDs: ' + snapshot.val());
 
-    if(!snapshot.child(data).exists()){
-      database.ref().child(data).set('initialized');
-      console.log('I just added ' + uid + 'to the database');
-    }
-
-      });
-
+    setTimeout(function(){
+      if(!snapshot.child(data).exists()){
+        database.ref().child(data).set('initialized');
+        console.log('I just added ' + uid + 'to the database');
+      }
+    }, 5000);
+    
+  });
 }
 
