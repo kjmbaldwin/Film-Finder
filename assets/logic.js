@@ -143,8 +143,11 @@ movieInfoDisplay(testImdbId);
 
 
 //######## Modal load ##########
-$(document).ready(function() {
-    $("#login-btn").click(function() {
+
+$(document).ready(function(){
+    $("#login-btn").click(function(){
+        $('#usrname').val('');
+        $('#password').val('');
         $("#myModal").modal();
     });
 
