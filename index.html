@@ -32,14 +32,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Home</a>
+      <a class="navbar-brand" href="index.html">Home</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><a href="maps.html">Map<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Profile</a></li>
+        <li><a href="profile.html">Profile</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li id="welcome">Welcome to Film Finder! To save movies, please sign up or log in!</li>
@@ -130,6 +130,28 @@
     </div>
   </div>
 </div>
+
+<div class="container">
+  <div class="modal fade" id="login-error-modal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <!-- <h4 class="modal-title">Error Modal</h4> -->
+        </div>
+        <div class="modal-body">
+          <p>You need to log in to add a movie to your Favorites.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div> 
 
   <!-- local javascript file -->
   <script type="text/javascript" src="assets/logic.js"></script>
