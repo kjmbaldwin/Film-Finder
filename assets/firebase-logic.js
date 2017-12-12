@@ -12,145 +12,99 @@ var database = firebase.database();
 
 //##### USER ACCOUNT SETUP #####
 
-/**
- * Handles the sign in button press.
- */
+//Sign in/Sign out Button functions
 function toggleSignIn() {
+
+  //hide error messages if are any
+  $('#valid-email-alert').hide();
+  $('#strong-password-alert').hide();
+
+
+  //Sign out:
+  //If there is a user, and the button is pressed, sign out.
   if (firebase.auth().currentUser) {
-    // [START signout]
     firebase.auth().signOut();
-    // [END signout]
-  } else {
-    var email = document.getElementById('usrname').value;
-    var password = document.getElementById('psw').value;
+  } 
+
+  //if there is no user signed in already:
+  else {
+    var email = $('#usrname').val().trim();
+    var password = $('#psw').val().trim();
     
-    /* This was the verification in the example, I may come back to this later
-    if (email.length < 4) {
-      alert('Please enter an email address.');
+    //validate email and pass
+    if (email.length < 6) {
+      $('#valid-email-alert').show();
       return;
     }
     if (password.length < 4) {
-      alert('Please enter a password.');
+      $('#strong-password-alert').show();
       return;
     }
-    */
 
 
-    // Sign in with email and pass.
-    // [START authwithemail]
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
-      // [START_EXCLUDE]
+      
       if (errorCode === 'auth/wrong-password') {
-        alert('Wrong password.');
+        $('#valid-email-alert').text('Wrong email or password').show();
       } else {
         alert(errorMessage);
       }
       console.log(error);
       document.getElementById('sign-in-btn').disabled = false;
-      // [END_EXCLUDE]
     });
-    // [END authwithemail]
+
   }
   document.getElementById('sign-in-btn').disabled = true;
+
+  //close modal after signing in.
+  $('#myModal').modal('toggle');
 }
 
-/**
- * Handles the sign up button press.
- */
+//Sign up button function
 function handleSignUp() {
-  var email = document.getElementById('usrname').value;
-  var password = document.getElementById('psw').value;
-  
-/*
-  if (email.length < 4) {
-    alert('Please enter an email address.');
-    return;
-  }
-  if (password.length < 4) {
-    alert('Please enter a password.');
-    return;
-  }
-*/
 
-  // Sign in with email and pass.
-  // [START createwithemail]
+  //hide error messages if are any
+  $('#valid-email-alert').hide();
+  $('#strong-password-alert').hide();
+
+  var email = $('#usrname').val().trim();
+  var password = $('#psw').val().trim();
+  
+    if (email.length < 6) {
+      $('#valid-email-alert').show();
+      return;
+    }
+    if (password.length < 4) {
+      $('#strong-password-alert').show();
+      return;
+    }
+
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
     var errorMessage = error.message;
-    // [START_EXCLUDE]
+
     if (errorCode == 'auth/weak-password') {
-      alert('The password is too weak.');
+      $('#valid-email-alert').text('Wrong email or password').show();
     } else {
       alert(errorMessage);
     }
     console.log(error);
-    // [END_EXCLUDE]
   });
-  // [END createwithemail]
 }
 
-
-
-
-/**
- * Sends an email verification to the user.
- */
-/* ###### Not gonna worry about emailing verification
-function sendEmailVerification() {
-  // [START sendemailverification]
-  firebase.auth().currentUser.sendEmailVerification().then(function() {
-    // Email Verification sent!
-    // [START_EXCLUDE]
-    alert('Email Verification Sent!');
-    // [END_EXCLUDE]
-  });
-  // [END sendemailverification]
-}
-*/
-
-
-function sendPasswordReset() {
-  var email = document.getElementById('email').value;
-  // [START sendpasswordemail]
-  firebase.auth().sendPasswordResetEmail(email).then(function() {
-    // Password Reset Email Sent!
-    // [START_EXCLUDE]
-    alert('Password Reset Email Sent!');
-    // [END_EXCLUDE]
-  }).catch(function(error) {
-    // Handle Errors here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    // [START_EXCLUDE]
-    if (errorCode == 'auth/invalid-email') {
-      alert(errorMessage);
-    } else if (errorCode == 'auth/user-not-found') {
-      alert(errorMessage);
-    }
-    console.log(error);
-    // [END_EXCLUDE]
-  });
-  // [END sendpasswordemail];
-}
-
-/**
- * initApp handles setting up UI event listeners and registering Firebase auth listeners:
- *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
- *    out, and that is where we update the UI.
- */
+//setup firebase listener.
 function initApp() {
-  // Listening for auth state changes.
-  // [START authstatelistener]
+
+
+
   firebase.auth().onAuthStateChanged(function(user) {
-    // [START_EXCLUDE silent]
-    // document.getElementById('quickstart-verify-email').disabled = true;
-    // [END_EXCLUDE]
+
     if (user) {
-      // User is signed in.
+      // User is signed in, this is all of the available info:
       var displayName = user.displayName;
       var email = user.email;
       var emailVerified = user.emailVerified;
@@ -158,39 +112,28 @@ function initApp() {
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
-      // [START_EXCLUDE]
-      // document.getElementById('quickstart-sign-in-status').textContent = 'Signed in';
-      document.getElementById('sign-in-btn').textContent = 'Sign out';
-      // document.getElementById('quickstart-account-details').textContent = JSON.stringify(user, null, '  ');
-      // if (!emailVerified) {
-      //   document.getElementById('quickstart-verify-email').disabled = false;
-      // }
-      // [END_EXCLUDE]
+
+      //if a user is signed in, set button to read Sign out
+      $('#sign-in-btn').text('Sign Out');
+
+      //update welcome messasge
+      $('#welcome').text('Welcome back, ' + displayName);
+
     } else {
-      // User is signed out.
-      // [START_EXCLUDE]
-      // document.getElementById('quickstart-sign-in-status').textContent = 'Signed out';
-      document.getElementById('sign-in-btn').textContent = 'Sign in';
-      // document.getElementById('quickstart-account-details').textContent = 'null';
-      // [END_EXCLUDE]
+      // if user is signed out, set button to say sign in
+      $('#sign-in-btn').text('Sign In');
     }
-    // [START_EXCLUDE silent]
+    
     document.getElementById('sign-in-btn').disabled = false;
-    // [END_EXCLUDE]
   });
-  // [END authstatelistener]
 
   document.getElementById('sign-in-btn').addEventListener('click', toggleSignIn, false);
   document.getElementById('sign-up-btn').addEventListener('click', handleSignUp, false);
-  // document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
-  // document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
 }
 
+//on load start the listener function
 window.onload = function() {
   initApp();
 };
 
 
-$(document).on('click', '#sign-in-btn', function(){
-  alert('testing');
-  });

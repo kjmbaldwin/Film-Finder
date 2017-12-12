@@ -59,9 +59,9 @@
     <div class="row margin-50">
       <div class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
         <div class="input-group">
-          <input id="search-margin" type="text" class="form-control" id="search-input" placeholder="Search for Film...">
+          <input type="text" class="form-control search-margin" id="search-input" placeholder="Search for Film...">
             <span class="input-group-btn">
-              <button id="search-margin" class="btn btn-default" id="search-btn" type="button">Search</button> 
+              <button class="btn btn-default search-margin" id="search-btn" type="button">Search</button> 
             </span>
         </div><!-- /input-group -->
       </div>
@@ -102,10 +102,12 @@
               <label for="usrname"><span class="glyphicon glyphicon-user"></span> Username</label>
               <input type="email" class="form-control" id="usrname" placeholder="Enter email">
             </div>
+            <div class="alert alert-danger collapse" role="alert" id="valid-email-alert"><span class="glyphicon glyphicon-exclamation-sign"></span> Please enter a valid email address.</div>
             <div class="form-group">
               <label for="psw"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
               <input type="password" class="form-control" id="psw" placeholder="Enter password">
             </div>
+            <div class="alert alert-danger collapse" role="alert" id="strong-password-alert"><span class="glyphicon gglyphicon-exclamation-sign"></span> Please enter a stronger password.</div>
             <div class="row">
               <div class="col-sm-offset-8 col-sm-4">
                 <div class="btn-group" role="group" aria-label="...">
