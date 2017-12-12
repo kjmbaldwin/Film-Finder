@@ -67,7 +67,7 @@ body {
 
 
 /*adds margin for search bar*/
-#search-margin {
+.search-margin {
 
 	margin-top: 15px;
 }
