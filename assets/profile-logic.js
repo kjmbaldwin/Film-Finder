@@ -131,6 +131,3 @@ function getFriends(){
 
 
 
-window.onload = function() {
-  getFavorites();
-};
