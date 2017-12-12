@@ -80,11 +80,18 @@ function movieInfoDisplay(imdbID) {
 
 
         // var posterURL = response.Poster;
+        var posterHolder = $('<a>');
+        posterHolder.attr('href', response.Poster);
+        posterHolder.attr('data-lightbox', 'image-1');
+        posterHolder.attr('data-title', response.Title + ' movie poster.');
+
         var posterElement = $('<img>');
         posterElement.attr('src', response.Poster);
         posterElement.attr('alt', response.Title);
+
         posterElement.addClass("poster");
-        var posterDiv = $('<div>').addClass('col-lg-4 col-md-4 col-sm-3').append(posterElement);
+        posterHolder.append(posterElement);
+        var posterDiv = $('<div>').addClass('col-lg-4 col-md-4 col-sm-3').append(posterHolder);
 
 
         posterRow.append(posterDiv);
