@@ -40,7 +40,7 @@ $('#search-btn').on('click', function() {
 
 
 
-// var testImdbId = 'tt0083658'; // imdbID for bladerunner
+// ###### Search for movies and build HTML elements into index.html #######
 
 function movieInfoDisplay(imdbID) {
     var queryURL = "https://www.omdbapi.com/?i=" + imdbID + "&y=&plot=short&apikey=" + omdbKey;
@@ -174,7 +174,7 @@ $(document).on('click', '.add', function() {
         alert('you need to log in'); //CHANGE THIS ALERT TO A MODAL <<<<<<<<<<<<<<<<<<<<<<
     } else {
         var movieID = $(this).attr('data-movie-id');
-        var user = uid; // hardcode for testing
+        var user = uid;
         console.log('data-movie-id: ', movieID);
         database.ref(user + '/favObj').once('value').then(function(snapshot) {
             var dataObj = snapshot.val();
@@ -193,4 +193,4 @@ $(document).on('click', '.add', function() {
             }
         })
     }
-})
+});
