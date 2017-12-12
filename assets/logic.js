@@ -96,7 +96,10 @@ function movieInfoDisplay(imdbID) {
 
 
         // var plot = response.Plot;
-        var plotElement = $('<p>').text('Plot: ' + response.Plot).addClass('plot-text');
+
+        var plotElement = $('<p>').text(response.Plot).addClass('plot-text');
+        var plotSpan = $('<div>').text('Plot: ').addClass('movie-details margin-top-10').append(plotElement);
+
 
         var director = $('<div>').text(response.Director).addClass('detail-font');
         var directorSpan = $('<div>').text('Director: ').addClass('movie-details margin-top-10').append(director);
@@ -115,7 +118,7 @@ function movieInfoDisplay(imdbID) {
         console.log(actors);
 
 
-        detailRow.append(plotElement);
+        detailRow.append(plotSpan);
         detailRow2.append(directorSpan);
         detailRow2.append(writerSpan);
         detailRow2.append(actorSpan);
@@ -154,6 +157,8 @@ $(document).ready(function(){
 
     // end
 });
+
+
 
 
 //######## Add a movie to favorites ##########
