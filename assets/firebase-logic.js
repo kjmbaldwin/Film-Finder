@@ -159,9 +159,9 @@ window.onload = function() {
 function newUID(data){
 
   database.ref().once('value').then(function(snapshot){
-    // console.log('current UIDs: ' + snapshot.val());
-
-    setTimeout(function(){
+    
+    setTimeout(function(){ //added timeout, I think the data was overwriting occasionaly if it did not respond fast enough
+    
       if(!snapshot.child(data).exists()){
         database.ref().child(data).set('initialized');
         console.log('I just added ' + uid + 'to the database');
