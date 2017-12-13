@@ -6,6 +6,8 @@ body {
 
 }
 
+
+
 /*black container*/
 #main-container {
 
@@ -65,13 +67,24 @@ body {
 }
 
 /*white font for navbar*/
+/*home link*/
 .navbar-default .navbar-brand{
 
 	color: white;
 }
 
+.navbar-default .navbar-brand<a:hover{
+	color: red; 
+}
+
+/*maps, profile, and login*/
 .navbar-default .navbar-nav>li>a{
 	color: white;
+}
+
+.navbar-default .navbar-nav>li>a:hover{
+	color: red;
+	
 }
 
 /*adds margin for search bar*/
@@ -92,6 +105,14 @@ body {
 	height: 850px;
 
 }
+
+/*profile panel background change*/
+
+#profile-panel {
+
+	background-color: grey;
+}
+
 
 .panel-body {
 
