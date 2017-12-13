@@ -1,7 +1,7 @@
 //##### Loads Current User Favorites #######
-function getFavorites(){
+function getFavorites(user){
 
-  database.ref(uid + "/favObj").once('value').then(function(snapshot){
+  database.ref(user + "/favObj").once('value').then(function(snapshot){
 
     var getFav = snapshot.val();
     console.log(getFav);
@@ -19,6 +19,8 @@ function getFavorites(){
     }
 
   })
+
+  getFriends();
 
 }
 
@@ -119,15 +121,66 @@ function buildProfile(imdbID) {
     })
 }
 
+var friends = []; 
+var friendID;  //var used to tag each UID as the ID on each div, currently commented out.
+
 //###### Loads friends page #####
 function getFriends(){
 
   database.ref().once('value').then(function(snapshot){
-    console.log(snapshot.val());
 
+
+
+    //grabs all UIDs     
+    friends = Object.keys(snapshot.val());
+    //finds index of current UID, and removes it from the array
+    var removeMe = friends.indexOf(uid)
+    friends.splice(removeMe, 1);
+
+    //loops through the UIDs
+
+    for (var m = 0; m < friends.length; m++) {
+
+      //i was trying to add the UID as a header for each element, but the loop is running too quickly, needs more debugging
+      // var friName = $('<div>').attr('id', friends[m]).html('<h2>'+ friends[m] +'</h2>');
+      // $('#tab2default').append(friName)
+
+      //friendID = friends[m];
+
+      database.ref(friends[m] + "/favObj").once('value').then(function(snapshot){
+
+        var friendFav = snapshot.val();
+
+        //if the UiD has favorites, loop through them
+        if(friendFav){
+          for (var n = 0; n < friendFav.length; n++) {
+            buildFriend(friendFav[n]); //add the second argument here too, if it gets changed
+          }
+        }
+      });
+    }
   });
-
 };
 
+//if you start using the ID stuff commened out above, add another argument
+function buildFriend(value){
+
+   var queryURL = "https://www.omdbapi.com/?i=" + value + "&y=&plot=short&apikey=" + omdbKey;
+    // ajax call
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function(response) {
+        console.log('friends response: ', response);
+
+        var title = response.Title;
+        console.log(title);
+        var friendDiv = $('<div>').addClass('movie-title');
+        friendDiv.text(title);
+
+        //$('#' + where).append(friendDiv); this is how you want to build to the correct ID with a second funtion argument
+        $('#tab2default').append(friendDiv);
+    });
+}
 
 
