@@ -135,6 +135,7 @@ function initApp() {
       $('#welcome').text('Welcome back, ' + split[0]);
 
       newUID(uid);
+      getFavorites(uid);
 
     } else {
       // if user is signed out, set button to say sign in
